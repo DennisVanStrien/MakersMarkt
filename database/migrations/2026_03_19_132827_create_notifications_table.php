@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 return new class extends Migration
 {
     /**
@@ -13,11 +14,10 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description');
-            $table->datetime('date_time')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamps();
+            $table->timestamp('date_time');
         });
     }
 

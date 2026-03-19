@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->enum('role', ['user', 'admin'])->default('user');
-            $table->integer('portfolio_id')->nullable()->references('id')->on('portfolio')->onDelete('set null');
+            $table->foreignId('portfolio_id')->nullable()->constrained()->onDelete('set null');
             $table->timestamps();
         });
 

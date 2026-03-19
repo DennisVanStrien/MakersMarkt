@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->decimal('price', 8, 2);
-            $table->integer('owner_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('specification_id')->references('id')->on('specifications')->onDelete('cascade');
-            $table->enum('status', ['Wordt gemaakt', 'Afgerond'])->default('Wordt gemaakt');
-            $table->integer('review_id')->references('id')->on('reviews')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('specification_id')->constrained()->cascadeOnDelete();
+            $table->enum('status', ['In productie', 'Verzonden', 'geweigerd'])->default('In productie');
+            $table->foreignId('review_id')->constrained()->cascadeOnDelete();
             $table->boolean('marked_for_moderation')->default(false);
             $table->enum('type', ['Hobby', 'Wonen', 'Sport', 'Sieraden', 'Kunst', 'Knuffels', 'Overig'])->default('Overig');
             $table->timestamps();

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->integer('to_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('from_user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreignId('to_user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('from_user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->timestamps();
         });
     }

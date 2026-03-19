@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('price', 8, 2);
             $table->integer('owner_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('specification_id')->references('id')->on('specifications')->onDelete('cascade');
-            $table->enum('status', ['ik ga jou aanranden', 'simsalaalbambam'])->default('ik ga jou aanranden');
+            $table->enum('status', ['Wordt gemaakt', 'Afgerond'])->default('Wordt gemaakt');
             $table->integer('review_id')->references('id')->on('reviews')->onDelete('cascade');
             $table->boolean('marked_for_moderation')->default(false);
             $table->enum('type', ['Hobby', 'Wonen', 'Sport', 'Sieraden', 'Kunst', 'Knuffels', 'Overig'])->default('Overig');

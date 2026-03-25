@@ -7,9 +7,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/koper/catalog', function () {
-    return view('koper.catalogus');
-})->name('koper.catalogus');
+Route::get('/producten/catalog', function () {
+    return view('producten/catalogus');
+})->name('catalogus');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

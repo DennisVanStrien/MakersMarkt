@@ -24,7 +24,7 @@
 
                         <div class="flex items-center gap-3 sm:gap-6">
                             <nav class="flex items-center gap-2 sm:gap-4">
-                                <a href="#"
+                                <a href="{{ route('catalogus') }}"
                                 class="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
                                     Shop
                                 </a>

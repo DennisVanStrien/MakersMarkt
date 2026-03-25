@@ -19,4 +19,9 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('producten.view')->with('product', $product);
     }
+
+    public function mijnProducten()
+    {
+        return view('maker.index');
+    }
 }

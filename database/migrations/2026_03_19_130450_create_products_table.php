@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('specification_id')->constrained()->cascadeOnDelete();
             $table->enum('status', ['In productie', 'Verzonden', 'geweigerd'])->default('In productie');
-            $table->foreignId('review_id')->constrained()->cascadeOnDelete();
             $table->boolean('marked_for_moderation')->default(false);
             $table->enum('type', ['Hobby', 'Wonen', 'Sport', 'Sieraden', 'Kunst', 'Knuffels', 'Overig'])->default('Overig');
             $table->timestamps();

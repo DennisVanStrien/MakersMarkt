@@ -18,8 +18,12 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->enum('role', ['user', 'admin'])->default('user');
-            $table->foreignId('portfolio_id')->nullable()->constrained()->onDelete('set null');
+            $table->enum('role', ['koper','verkoper', 'admin'])->default('user');
+<<<<<<< Updated upstream
+            $table->foreignId('portfolio_id')->nullable()->onDelete('set null');
+=======
+            $table->integer('portfolio_id')->nullable()->references('id')->on('portfolio')->onDelete('set null');
+>>>>>>> Stashed changes
             $table->timestamps();
         });
 

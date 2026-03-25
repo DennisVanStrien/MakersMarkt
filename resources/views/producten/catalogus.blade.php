@@ -1,5 +1,4 @@
-@extends('layout.base')
-@section('content')
+
     <div class="container">
         <h1>Catalogus</h1>
         <div class="row">
@@ -12,8 +11,8 @@
                             <p class="card-text">{{ $product->description }}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm btn-outline-secondary">View</a>
-                                    <a href="{{ route('#', $product->id) }}" class="btn btn-sm btn-outline-primary">Add to Cart</a>
+                                    <a href="{{ route('producten.view', $product->id) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Add to Cart</a>
                                 </div>
                                 <small class="text-muted">${{ number_format($product->price, 2) }}</small>
                             </div>
@@ -23,4 +22,4 @@
             @endforeach
         </div>
     </div>
-@endsection
+

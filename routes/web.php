@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 use function Pest\Laravel\get;
 
@@ -10,9 +11,26 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/koper/catalog', function () {
-    return view('koper.catalogus');
-})->name('koper.catalogus');
+Route::middleware(['auth', 'role:koper,verkoper,admin'])->group(function () {
+    Route::get('/producten/catalog', function () {
+        return view('producten/catalogus');
+    })->name('catalogus');
+
+    Route::get('/producten/{id}', [ProductController::class, 'view'])->name('producten.view');
+    Route::get('/producten', [ProductController::class, 'index'])->name('producten.index');
+});
+
+Route::middleware(['auth', 'role:verkoper,admin'])->group(function () {
+    Route::get('/portfolio', function () {
+        return 'Portfolio placeholder';
+    })->name('portfolio.index');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/', function () {
+        return 'Admin placeholder';
+    })->name('admin.dashboard');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

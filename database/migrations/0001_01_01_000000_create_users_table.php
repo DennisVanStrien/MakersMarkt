@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->enum('role', ['koper','verkoper', 'admin'])->default('user');
+            $table->enum('role', ['koper','verkoper', 'admin'])->default('koper');
             $table->foreignId('portfolio_id')->nullable()->onDelete('set null');
             $table->timestamps();
         });

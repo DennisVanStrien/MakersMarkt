@@ -8,16 +8,30 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/producten/catalog', function () {
-    return view('producten/catalogus');
-})->name('catalogus');
+Route::middleware(['auth', 'role:koper,verkoper,admin'])->group(function () {
+    Route::get('/producten/catalog', function () {
+        return view('producten/catalogus');
+    })->name('catalogus');
+
+    Route::get('/producten/{id}', [ProductController::class, 'view'])->name('producten.view');
+    Route::get('/producten', [ProductController::class, 'index'])->name('producten.index');
+});
+
+Route::middleware(['auth', 'role:verkoper,admin'])->group(function () {
+    Route::get('/portfolio', function () {
+        return 'Portfolio placeholder';
+    })->name('portfolio.index');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/', function () {
+        return 'Admin placeholder';
+    })->name('admin.dashboard');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/producten/{id}', [ProductController::class, 'view'])->name('producten.view');
-Route::get('/producten', [ProductController::class, 'index'])->name('producten.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

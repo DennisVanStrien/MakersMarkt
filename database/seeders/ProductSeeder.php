@@ -25,6 +25,7 @@ class ProductSeeder extends Seeder
             'status' => 'In productie',
             'marked_for_moderation' => false,
             'type' => 'Kunst',
+            'image' => "PlaceHolderImage.img"
         ]);
 
         Product::create([

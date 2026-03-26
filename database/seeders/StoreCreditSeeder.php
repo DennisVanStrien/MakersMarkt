@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\store_credit;
+use App\Models\StoreCredit;
 use App\Models\User;
 
 class StoreCreditSeeder extends Seeder
@@ -14,7 +14,7 @@ class StoreCreditSeeder extends Seeder
      */
     public function run(): void
     {
-        store_credit::create([
+        StoreCredit::create([
             'user_id' => User::query()->inRandomOrder()->first()?->id,
             'value' => 100.00,
         ]);

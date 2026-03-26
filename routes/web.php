@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 
 use function Pest\Laravel\get;
 
